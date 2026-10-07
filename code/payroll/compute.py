@@ -34,8 +34,16 @@ def calc_gross_pay(hours: float, rate: float) -> float:
         calc_gross_pay(0.75, 17.0)   ->  12.75
         calc_gross_pay(20.0, float("nan"))  ->  0.0
     """
-    # TODO: your code here
-    pass
+    if pd.isna(rate):
+        return 0.0
+    if pd.isna(hours):
+        return 0.0
+    if hours <= 40:
+        return hours * rate
+    if hours > 40:
+        base = 40 * rate
+        overtime = (hours - 40) * rate * 1.5
+        return (base + overtime)
 
 
 def classify_pay(hours: float, rate: float) -> str:
@@ -48,9 +56,14 @@ def classify_pay(hours: float, rate: float) -> str:
     Check for unmatched *first*: an unknown employee with 45 hours is still
     unmatched, not overtime.
     """
-    # TODO: your code here
-    pass
-
+    classification = ""
+    if pd.isna(rate):
+        classification = "unmatched"
+    elif hours > 40:
+        classification = "overtime"
+    else:
+        classification = "regular"
+    return classification
 
 def add_gross_pay(payroll: pd.DataFrame) -> pd.DataFrame:
     """Return a copy with one new column, `gross_pay`: `calc_gross_pay` for every row.
@@ -61,13 +74,19 @@ def add_gross_pay(payroll: pd.DataFrame) -> pd.DataFrame:
         lambda row: calc_gross_pay(row["hours_worked"], row["hourly_rate_usd"])
     """
     # TODO: your code here
-    pass
+    out = payroll.copy()
+    out["gross_pay"] = out.apply(lambda row: calc_gross_pay(row["hours_worked"], 
+                                                            row["hourly_rate_usd"]), axis = 1)
+    return out
 
 
 def add_pay_type(payroll: pd.DataFrame) -> pd.DataFrame:
     """Return a copy with one new column, `pay_type`: `classify_pay` for every row."""
     # TODO: your code here
-    pass
+    out = payroll.copy()
+    out["pay_type"] = out.apply(lambda row: classify_pay(row["hours_worked"], 
+                                                                row["hourly_rate_usd"]), axis = 1)
+    return out
 
 
 def build_payroll(timesheet: pd.DataFrame, employees: pd.DataFrame) -> pd.DataFrame:
@@ -79,8 +98,18 @@ def build_payroll(timesheet: pd.DataFrame, employees: pd.DataFrame) -> pd.DataFr
     and the roster's columns — one row per timesheet row.
     """
     # TODO: your code here
-    pass
+    # clean both dataframes:
+    timesheet = add_hours_worked (timesheet)
+    employees = add_hourly_rate(employees)
 
+    # merge frames
+    merged = merge_employees(timesheet, employees)
+
+    # add gross_pay and pay type
+    with_gross_pay = add_gross_pay(merged)
+    final = add_pay_type(with_gross_pay)
+
+    return final
 
 def payroll_export(payroll: pd.DataFrame) -> pd.DataFrame:
     """The file the online payroll provider imports — a NEW frame, not a renamed one.
@@ -99,4 +128,5 @@ def payroll_export(payroll: pd.DataFrame) -> pd.DataFrame:
     view of it shaped for someone else's system.
     """
     # TODO: your code here
-    pass
+    out = payroll.copy()
+    output = payroll [ ["payroll_date"], ["employee_id"]:["employeeid"]]

@@ -38,3 +38,16 @@ Test it: pytest tests/test_pipeline.py -k app
 #
 # What the page does NOT do: arithmetic on rows, cleaning, merging. If you find
 # yourself writing a loop or an apply here, that logic belongs in the package.
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.title("Salt City Coffee - Weekly Payroll")
+
+timesheet = st.file_uploader("Upload Weekyl timesheet (CSV)", key:"timesheet")
+
+
+employees_paid = timesheet["employee_id"].nunique()
+total_hours = timesheet[""]
+st.metric("Files Processed", metric)
