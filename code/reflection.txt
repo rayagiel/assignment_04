@@ -4,7 +4,7 @@ I learned how to maintain data lineage. I added columns to the dataframes
 instead of writing over the original data. This made the dataframe wider, but never 
 overwrote the original data. I learned how to use dataframe.apply(lambda row) to apply 
 functions to entire dataframes. This allowed me to create new columns using the existing rows 
-of the dataframe is inputs. 
+of the dataframe as inputs. 
 
 Struggles:
 I struggled to write the parse_hours function because I forgot to use a try/except block to handle values that 
@@ -13,7 +13,7 @@ convert a string to a float by removing extra characters and punctuation. When t
 those string operations failed, so the function raised an error instead of returning the value.
 
 Improvements for next time:
-Next time, I am going to open the Streamlit to check my work as I am writing the code. 
+Next time, I am going to run Streamlit to check my work as I am writing the code. 
 Once I finished my initial Streamlit interface, 
 I opened the app and realized I made many mistakes. I had switched the success and error messages, so the error 
 message would appear when there was a success. This impacted how I wrote my export function. Had I been
