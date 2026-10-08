@@ -1,12 +1,15 @@
 I learned how to maintain data lineage during this assignment by adding the columns to the dataframe 
-instead of writing over the data frame. This made the dataframe wider and wider, but never 
-overwrote the original data incase someone else might need it donwn the line. I learned how to 
-use series.apply and lambda row to apply functions to entire dataframes. This allowed me to create new columns with 
-their outputs. I learned how to merge dataframes. We wanted to merge on the timesheet because then we get everyone 
-who worked even if they are not in the roster. If you want every row of a dataframe to be in the merged data frame, 
-you need to merge on that data frame. I struggled writing the parse_hours function because I had never wrote 
+instead of writing over the original data. This made the dataframe wider and wider, but never 
+overwrote the original data incase someone else might need it donwn the line. 
+
+I learned how to use series.apply to apply functions to entire dataframes. This allowed me to create new columns with 
+the outputs of the functions using other columns as the parameters of the function. 
+
+I struggled writing the parse_hours function because I had never wrote 
 a try/except to check if the orignal value was a float. It kept returing 0.0 when the starting value was a float 
-instead of the correct value. I also struggled with laying out the streamlit app. Next time, I am going to open the 
+instead of the correct value. I also struggled with laying out the streamlit app. 
+
+Next time, I am going to open the 
 streamlit to check my work as I am writing. I did not open it until I was done with my first try and I did not work, 
 so I had to go through all of my lines of code to find the errors instead of doing it as a coded. Running the streamlit 
 was what finally allowed me to figure out my mistakes, so I am going to do that earlier next time.

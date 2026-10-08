@@ -47,26 +47,39 @@ def parse_hours(value) -> float:
       and return `0.0` if anything inside a word is not a number.
     - The mistake people make: forgetting the `/ 60`. `"45m"` is three quarters
       of an hour, not 45 hours, and `test_parse_hours` will tell you.
-    """  
+    """
     if pd.isna(value):
-        value = 0.0
-    if type(value) != type("string"):
-        return float(value)
-    try:
-        return float(value)
-    except ValueError:
-        hours = 0.0
-        value = value.strip() 
-        components = value.split()
-        for word in components:
-            if word.endswith("m"):
-                mins = float(word[:-1])
-                hours += mins / 60 
+        return 0.0
+
+    if not isinstance(value, str):
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return 0.0
+
+    text = value.strip()
+    if text == "":
+        return 0.0
+
+    if "h" not in text and "m" not in text:
+        try:
+            return float(text)
+        except ValueError:
+            return 0.0
+
+    hours = 0.0
+    for word in text.split():
+        try:
             if word.endswith("h"):
                 hours += float(word[:-1])
-        return hours
+            elif word.endswith("m"):
+                hours += float(word[:-1]) / 60
+        except ValueError:
+            return 0.0
 
-    
+    return hours
+
+
 def clean_currency(value) -> float:
     """Read a dollar amount as HR typed it; return it as a float.
 
@@ -88,15 +101,19 @@ def clean_currency(value) -> float:
       is not an accident — cleaning currency is something every pipeline does.
     """
     if pd.isna(value):
-        value = 0.0
-    value = str(value)
-    value = value.replace("$", "").replace(",", "")
-    value = value.strip()
-    try:
-      return float(value)
-    except ValueError:
-      return 0.0
+        return 0.0
 
+    if not isinstance(value, str):
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return 0.0
+
+    cleaned = value.replace("$", "").replace(",", "").strip()
+    try:
+        return float(cleaned)
+    except ValueError:
+        return 0.0
 
 
 def add_hours_worked(timesheet: pd.DataFrame) -> pd.DataFrame:
@@ -115,6 +132,7 @@ def add_hours_worked(timesheet: pd.DataFrame) -> pd.DataFrame:
       shape: copy, add a column, return.
     """
     out = timesheet.copy()
+
     out["hours_worked"] = out["hours"].apply(parse_hours)
     return out
 
