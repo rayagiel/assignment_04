@@ -6,7 +6,7 @@ I learned how to use dataframe.apply(lambda row) to apply functions to entire da
 the outputs of the functions using other columns as the parameters of the function. 
 
 I struggled writing the parse_hours function because I forgot to write 
-a "try/except" block to check if the orignal value was a float. It kept returning 0.0 when the starting value was a float 
+a "try/except" block to check if the original value was a float. It kept returning 0.0 when the starting value was a float 
 instead of the correct float. I also struggled with laying out the streamlit app. 
 
 Next time, I am going to open the Streamlit to check my work as I am writing. I did not open it until I was done with my 
