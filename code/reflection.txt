@@ -1,3 +1,4 @@
+
 Learning:
 I learned how to maintain data lineage during this assignment by adding columns to the dataframe 
 instead of writing over the original data. This made the dataframe wider and wider, but never 
@@ -6,17 +7,16 @@ dataframe.apply(lambda row) to apply functions to entire dataframes. This allowe
 the outputs of the functions using other columns as the parameters of the function. 
 
 Struggles:
-I struggled writing the parse_hours function because I forgot to write a "try/except" block to check if the 
-original value was a float. My code only added numbers to the ouput variable if the initial value was a 
-string with letters designating a number as mintues or hours. I had not written code that would allow a float to 
-be recorded as anything but 0.0 becasue my code only returned the correct value when the input was a string with 
+I struggled writing the parse_hours function because I forgot to write a "try/except" block to check if the original value was a float. My code only added numbers to the output variable if the initial value was a 
+string with letters designating a number as minutes or hours. I had not written code that would allow a float to 
+be recorded as anything but 0.0 because my code only returned the correct value when the input was a string with 
 characters. 
 
 Improvements for next time:
 Next time, I am going to open the Streamlit to check my work as I am writing. I did not open Streamlit until I was 
 entirely done with my first attempt at writing the whole interface. It did not work because I had switched the success
 and error messages, so the error message would come up when there was a success and vice versa. This impacted how I 
-wrote my export function because you only import the sucesses and I was exporting only the unmatched rows. Had I been
-runing Streamlit the whole time, I could have quickly caught and corrected this error, but instead it compounded. I 
+wrote my export function because you only import the successes and I was exporting only the unmatched rows. Had I been
+running Streamlit the whole time, I could have quickly caught and corrected this error, but instead it compounded. I 
 had to do more work to go back and fix all of my errors. Running the Streamlit app allowed me to figure out my mistakes, 
 so I am going to do that earlier next time.
