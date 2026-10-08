@@ -1,20 +1,19 @@
 
 Learning:
-I learned how to maintain data lineage during this assignment by adding columns to the dataframe 
+I learned how to maintain data lineage. I added columns to the dataframes
 instead of writing over the original data. This made the dataframe wider, but never 
-overwrote the original data. I learned how to use dataframe.apply(lambda row) to apply functions to entire dataframes. 
-This allowed me to create new columns with the outputs of the functions using other columns as the parameters of 
-the function. 
+overwrote the original data. I learned how to use dataframe.apply(lambda row) to apply 
+functions to entire dataframes. This allowed me to create new columns using the existing rows 
+of the dataframe is inputs. 
 
 Struggles:
 I struggled writing the parse_hours function because I forgot to write a "try/except" block to check if the 
-original value was a float. My code only returned a non 0.0 result if the initial value was a 
-string. I had not written code that would allow a float to be recorded as anything but 0.0 because 
-my code only returned the correct value when the input was a string with characters. 
+original value was a float. My code only returned a correct result if the initial value was a 
+string. I had only written code that converted a string to a float by removing the extra characters and punctuation. 
+This did not work of a float. 
 
 Improvements for next time:
-Next time, I am going to open the Streamlit to check my work as I am writing. I did not open Streamlit until I was 
-entirely done with my first attempt at writing the whole interface. It did not work because I had switched the success
-and error messages, so the error message would come up when there was a success and vice versa. This impacted how I 
-wrote my export function because you only import the successes and I was exporting only the failed matches. Had I been
+Next time, I am going to open the Streamlit to check my work as I am writing the code. Once I finished my initial Streamlit interface, 
+I opened the app and realized I made many mistakes. I had switched the success and error messages, so the error 
+message would appear when there was a success. This impacted how I wrote my export function. Had I been
 running Streamlit the whole time, I could have quickly caught and corrected this error, but instead my error compounded. 
