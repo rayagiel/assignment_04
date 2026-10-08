@@ -47,8 +47,7 @@ def parse_hours(value) -> float:
       and return `0.0` if anything inside a word is not a number.
     - The mistake people make: forgetting the `/ 60`. `"45m"` is three quarters
       of an hour, not 45 hours, and `test_parse_hours` will tell you.
-    """
-  
+    """  
     if pd.isna(value):
         value = 0.0
     if type(value) != type("string"):

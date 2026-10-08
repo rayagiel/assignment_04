@@ -128,5 +128,6 @@ def payroll_export(payroll: pd.DataFrame) -> pd.DataFrame:
     out = payroll.copy()
     out = out[out["pay_type"] != "unmatched"]
     output = pd.DataFrame({'payrolldate':out["payroll_date"], 'employeeid':out["employee_id"], 
-                           'hours':out["hours_worked"], 'rate':out["hourly_rate_usd"], 'total':out["gross_pay"]})
+                           'hours':out["hours_worked"], 'rate': out["hourly_rate_usd"], 
+                           'total':out["gross_pay"]})
     return output
