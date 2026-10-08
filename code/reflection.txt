@@ -3,8 +3,10 @@ Learning:
 I learned how to maintain data lineage. I added columns to the dataframes
 instead of writing over the original data. This made the dataframe wider, but never 
 overwrote the original data. I learned how to use dataframe.apply(lambda row) to apply 
-functions to entire dataframes. This allowed me to create new columns using the existing rows 
-of the dataframe as inputs. 
+functions to entire dataframes. This is different than calling Series.apply() because it allowed me to use other 
+series, or columns, in the dataframe as the inputs of the function. For example, it would take a function that could
+multiply the rate and the hours and apply it to a dataframe. This gives the total pay, but applied to the entire dataframe
+creates a new column "gross_pay" for every single row. You only have to call the function once.
 
 Struggles:
 I struggled to write the parse_hours function because I forgot to use a try/except block to handle values that 
