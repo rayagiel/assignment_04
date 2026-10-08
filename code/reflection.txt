@@ -7,13 +7,14 @@ functions to entire dataframes. This allowed me to create new columns using the 
 of the dataframe is inputs. 
 
 Struggles:
-I struggled writing the parse_hours function because I forgot to write a "try/except" block to check if the 
-original value was a float. My code only returned a correct result if the initial value was a 
-string. I had only written code that converted a string to a float by removing the extra characters and punctuation. 
-This did not work of a float. 
+I struggled to write the parse_hours function because I forgot to use a try/except block to handle values that 
+were already floats. My code only worked when the initial value was a string, because I had only written logic to 
+convert a string to a float by removing extra characters and punctuation. When the input was already a float, 
+those string operations failed, so the function raised an error instead of returning the value.
 
 Improvements for next time:
-Next time, I am going to open the Streamlit to check my work as I am writing the code. Once I finished my initial Streamlit interface, 
+Next time, I am going to open the Streamlit to check my work as I am writing the code. 
+Once I finished my initial Streamlit interface, 
 I opened the app and realized I made many mistakes. I had switched the success and error messages, so the error 
 message would appear when there was a success. This impacted how I wrote my export function. Had I been
 running Streamlit the whole time, I could have quickly caught and corrected this error, but instead my error compounded. 
