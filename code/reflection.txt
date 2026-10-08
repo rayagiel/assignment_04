@@ -1,15 +1,15 @@
-I learned how to maintain data lineage during this assignment by adding the columns to the dataframe 
+I learned how to maintain data lineage during this assignment by adding columns to the dataframe 
 instead of writing over the original data. This made the dataframe wider and wider, but never 
-overwrote the original data incase someone else might need it down the line. 
+overwrote the original data in case someone else might need it down the line. 
 
-I learned how to use .apply(lambda row) to apply functions to entire dataframes. This allowed me to create new columns with 
+I learned how to use dataframe.apply(lambda row) to apply functions to entire dataframes. This allowed me to create new columns with 
 the outputs of the functions using other columns as the parameters of the function. 
 
-I struggled writing the parse_hours function because I had never wrote 
+I struggled writing the parse_hours function because I forgot to write 
 a "try/except" block to check if the orignal value was a float. It kept returning 0.0 when the starting value was a float 
 instead of the correct float. I also struggled with laying out the streamlit app. 
 
-Next time, I am going to open the streamlit to check my work as I am writing. I did not open it until I was done with my 
-first attempt at writing the whole thing through. It did not work and I had to go through all of my lines of code 
-to find the errors instead of doing it as I coded. Running the streamlit app allowed me to figure out my mistakes, 
+Next time, I am going to open the Streamlit to check my work as I am writing. I did not open it until I was done with my 
+first attempt at writing the whole thing through. It did not work, and I had to go through all of my lines of code 
+to find the errors instead of doing it as I coded. Running the Streamlit app allowed me to figure out my mistakes, 
 so I am going to do that earlier next time.
