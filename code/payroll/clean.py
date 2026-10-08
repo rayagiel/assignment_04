@@ -115,7 +115,6 @@ def add_hours_worked(timesheet: pd.DataFrame) -> pd.DataFrame:
     - `return out`. Three lines. Every pipeline step in this assignment has this
       shape: copy, add a column, return.
     """
-    # TODO: your code here
     out = timesheet.copy()
     out["hours_worked"] = out["hours"].apply(parse_hours)
     return out
@@ -130,7 +129,6 @@ def add_hourly_rate(employees: pd.DataFrame) -> pd.DataFrame:
     How to build it: the same three lines as `add_hours_worked`, with the other
     function and the other column names.
     """
-    # TODO: your code here
     out = employees.copy()
     out["hourly_rate_usd"] = out["hourly_rate"].apply(clean_currency)
     return out
