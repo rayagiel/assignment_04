@@ -39,7 +39,7 @@ def calc_gross_pay(hours: float, rate: float) -> float:
     if pd.isna(hours):
         return 0.0
     if hours <= 40:
-        return hours * rate
+        return round((hours * rate),2)
     if hours > 40:
         base = 40 * rate
         overtime = (hours - 40) * rate * 1.5
@@ -73,7 +73,6 @@ def add_gross_pay(payroll: pd.DataFrame) -> pd.DataFrame:
 
         lambda row: calc_gross_pay(row["hours_worked"], row["hourly_rate_usd"])
     """
-    # TODO: your code here
     out = payroll.copy()
     out["gross_pay"] = out.apply(lambda row: calc_gross_pay(row["hours_worked"], 
                                                             row["hourly_rate_usd"]), axis = 1)
@@ -82,7 +81,6 @@ def add_gross_pay(payroll: pd.DataFrame) -> pd.DataFrame:
 
 def add_pay_type(payroll: pd.DataFrame) -> pd.DataFrame:
     """Return a copy with one new column, `pay_type`: `classify_pay` for every row."""
-    # TODO: your code here
     out = payroll.copy()
     out["pay_type"] = out.apply(lambda row: classify_pay(row["hours_worked"], 
                                                                 row["hourly_rate_usd"]), axis = 1)
@@ -97,7 +95,7 @@ def build_payroll(timesheet: pd.DataFrame, employees: pd.DataFrame) -> pd.DataFr
     pipeline computes (`hours_worked`, `hourly_rate_usd`, `gross_pay`, `pay_type`)
     and the roster's columns — one row per timesheet row.
     """
-    # TODO: your code here
+
     # clean both dataframes:
     timesheet = add_hours_worked (timesheet)
     employees = add_hourly_rate(employees)
@@ -127,6 +125,8 @@ def payroll_export(payroll: pd.DataFrame) -> pd.DataFrame:
     pipeline's columns. The pipeline table keeps its lineage; the export is a
     view of it shaped for someone else's system.
     """
-    # TODO: your code here
     out = payroll.copy()
-    output = payroll [ ["payroll_date"], ["employee_id"]:["employeeid"]]
+    out = out[out["pay_type"] != "unmatched"]
+    output = pd.DataFrame({'payrolldate':out["payroll_date"], 'employeeid':out["employee_id"], 
+                           'hours':out["hours_worked"], 'rate':out["hourly_rate_usd"], 'total':out["gross_pay"]})
+    return output
